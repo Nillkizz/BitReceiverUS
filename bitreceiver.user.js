@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name         BitReceiver
 // @namespace    Nillkizz
-// @version      0.1.2
-// @updateURL    https://gist.github.com/Nillkizz/7518478d872f02e3af1e5f96ac9aee65/raw/12b9fae01d09e655081bc45190e9e861e3e914e0/BitReceiver.user.js
-// @downloadURL  https://gist.github.com/Nillkizz/7518478d872f02e3af1e5f96ac9aee65/raw/12b9fae01d09e655081bc45190e9e861e3e914e0/BitReceiver.user.js
+// @version      0.1.3
+// @homepage     https://github.com/Nillkizz/BitReceiverUS/
+// @homepageURL  https://github.com/Nillkizz/BitReceiverUS/
+// @updateURL    https://github.com/Nillkizz/BitReceiverUS/raw/main/bitreceiver.user.js
+// @downloadURL  https://github.com/Nillkizz/BitReceiverUS/raw/main/bitreceiver.user.js
 // @description  Recive all requests
 // @author       Nillkizz
 // @include      http://zergbit.net/dashboard/buy/
