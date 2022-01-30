@@ -15,6 +15,7 @@
 
 (function () {
   'use strict';
+  const buyedIds = [];
 
   const config = {
     paymentSystems: [
@@ -58,7 +59,13 @@
           console.log(tbody);
 
           const id = /# (\d*)/.exec(tbody.data.id)[1];
+          if (buyedIds.includes(id)) {
+            console.log("Skipped deal id:", id);
+            return;
+          }
+
           accept_buy_deal(parseInt(id))
+          buyedIds.push(id)
           break;
 
         default:
