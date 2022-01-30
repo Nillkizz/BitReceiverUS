@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BitReceiver
 // @namespace    Nillkizz
-// @version      0.1.3
+// @version      0.1.4
 // @homepage     https://github.com/Nillkizz/BitReceiverUS/
 // @homepageURL  https://github.com/Nillkizz/BitReceiverUS/
 // @updateURL    https://github.com/Nillkizz/BitReceiverUS/raw/main/bitreceiver.user.js
