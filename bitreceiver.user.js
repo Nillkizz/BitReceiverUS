@@ -19,7 +19,7 @@
   const config = {
     paymentSystems: [
       'Сбербанк',
-      'Тинькоф'
+      'Tinkoff'
     ],
     delay: 0
   };
