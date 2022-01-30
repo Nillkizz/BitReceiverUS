@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         BitReceiver
 // @namespace    Nillkizz
-// @version      0.1.4
+// @version      0.2.0
 // @homepage     https://github.com/Nillkizz/BitReceiverUS/
 // @homepageURL  https://github.com/Nillkizz/BitReceiverUS/
 // @updateURL    https://github.com/Nillkizz/BitReceiverUS/raw/main/bitreceiver.user.js
 // @downloadURL  https://github.com/Nillkizz/BitReceiverUS/raw/main/bitreceiver.user.js
-// @description  Recive all requests
+// @description  Receive all requests
 // @author       Nillkizz
 // @include      http://zergbit.net/dashboard/buy/
 // @icon         http://zergbit.net/static/zergbit.ico
@@ -51,11 +51,14 @@
     for (const node of nodes) {
       switch (node.tagName) {
         case "TBODY":
-          const result = processRequestTBODY(node);
+          const tbody = processRequestTBODY(node);
           if (config.paymentSystems instanceof Array) {
             if (!config.paymentSystems.includes(result.data.toSend[1])) return;
           }
-          console.log(result);
+          console.log(tbody);
+
+          const id = /# (\d*)/.exec(tbody.data.id)[1];
+          accept_buy_deal(parseInt(id))
           break;
 
         default:
