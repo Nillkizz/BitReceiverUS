@@ -94,7 +94,7 @@
 
           console.log(tbody.data)
 
-          accept_buy_deal(parseInt(id))
+          // accept_buy_deal(parseInt(id))
           console.log('buyed', tbody.data)
           buyedIds.push(id)
           break;
@@ -106,7 +106,9 @@
   }
 
   function processRequestTBODY(node) {
-    const [status, id, req, comment, toSend, toReceive, course, date] = Array.from(node.querySelectorAll('td'))
+    const cols = Array.from(node.querySelectorAll('td'));
+
+    const [status, id, req, comment, toSend, toReceive, course, date] = cols
       .map((el, i) => {
         switch (i) {
           case 0: case 1: case 2: case 3:
@@ -119,6 +121,51 @@
       })
     node.data = { status, id, req, comment, toSend, toReceive, course, date };
     console.log(node.data)
+    const data2 = {
+      status: cols[0].textContent,
+      id: /# (\d*)/.exec(cols[1].textContent)[1],
+      req: cols[2].textContent.trim(),
+      comment: cols[3].textContent,
+      sendPrice: parseInt(cols[4].childNodes[0].textContent),
+      sendPayName: cols[4].querySelector('span').textContent,
+      recPrice: parseFloat(cols[5].childNodes[0].textContent),
+      recPayName: cols[5].childNodes[2].textContent,
+      coursePrice: parseInt(cols[6].childNodes[0].textContent),
+      courseCurrency: cols[6].childNodes[2].textContent,
+      date: new Date(cols[7].childNodes[0].textContent),
+      toPayTime: cols[7].querySelector('span').textContent,
+    }
+    console.table(data2)
     return node;
+  }
+
+
+  class TestModule {
+    constructor() {
+
+    }
+  }
+  class State {
+    constructor() {
+
+    }
+  }
+  class Menu {
+    constructor() {
+      this.init()
+    }
+    init() {
+      this.el = document.createElement('div');
+      this.el.innerHTML = ```
+      <table>
+        <tr>
+          <th></th>
+        </tr>
+      </table>
+      ```;
+      this.el.id = ('nillkizz_menu');
+      document.body.appendChild(this.el);
+    }
+
   }
 })();
