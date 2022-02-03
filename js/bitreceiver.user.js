@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BitReceiver
 // @namespace    Nillkizz
-// @version      0.3.0
+// @version      0.3.1
 // @homepage     https://github.com/Nillkizz/BitReceiverUS/
 // @homepageURL  https://github.com/Nillkizz/BitReceiverUS/
 // @updateURL    https://github.com/Nillkizz/BitReceiverUS/raw/main/bitreceiver.user.js
@@ -26,26 +26,19 @@
         min: 0,
         max: Infinity,
         averall: 100000,
+        curentAverall: 0
       },
       validate(payName, price) {
-        let is_valid = [true];
+        if (!Object.keys(this).includes(payName)) return true;
+
         const payPrices = this[payName];
-
-        if (typeof payPrices !== 'undefined') { // if Max and Min prices is ok
-          is_valid.push(payPrices.min < price && payPrices.max > price);
-        }
-
-        if (typeof payPrices.curentAverall !== 'number') payPrices.curentAverall = 0;
-        is_valid.push((payPrices.curentAverall + parseInt(price)) < payPrices.averall)
+        if (!(payPrices.min < price && payPrices.max > price)) return false;
+        if (!((payPrices.curentAverall + parseInt(price)) < payPrices.averall)) return false;
 
         console.log(`Averall/CurrentAverall: ${payPrices.averall}/${payPrices.curentAverall}`)
 
-        is_valid = is_valid.reduce((a, b) => a && b)
-        if (is_valid) {
-          if (typeof payPrices.curentAverall === 'number') payPrices.curentAverall += parseInt(price);
-          else payPrices.curentAverall = parseInt(price);
-        }
-        return is_valid;
+        payPrices.curentAverall += parseInt(price);
+        return true;
       }
     },
     delay: 0
