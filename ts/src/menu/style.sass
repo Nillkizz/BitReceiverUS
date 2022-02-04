@@ -1,12 +1,89 @@
 #nillkizz_menu
   position: fixed
-  top: 0
-  left: 0
+  top: 80px
+  left: -325px
   background-color: #EEDDDDEE
   padding: 10px
-
+  padding-right: 40px
+  padding-top: 40px
+  border-radius: 0 10px 10px 0
+  transition: left .5s
+  width: 350px
+  z-index: 999999
   table
     border-collapse: collapse
+    caption
+      caption-side: top
+      color: darkred
+      text-align: center
+      font-weight: bold
+      padding: 0
+      border-radius: 5px 5px 0 0
+      margin: 0
+      background-color: #0003
+    th
+      background-color: #313D4F
+    td
+      color: darkred
+      font-weight: bold
+      background-color: #f2f2f2
+      padding: 0
   table, th, td
     border: 1px solid black
     padding: 5px
+    text-align: center
+  .n_row
+    margin-bottom: 8px
+
+  .editor
+    td
+      padding: 3px
+      input
+        width: 100%
+        text-align: center
+    .payments select
+      width: 100%
+    .controls
+      display: flex
+      gap: 3px
+      button
+        flex-grow: 1
+
+  .toggler
+    cursor: pointer
+    background: #0003
+    height: 100%
+    padding: 0 5px
+    position: absolute
+    right: 0
+    top: 0
+    border-radius: 0 10px 10px 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    svg
+      height: 20px
+      padding-bottom: 5px
+      transition: transform .8s
+      transform: rotate(90deg)
+  .edit_toggler
+    cursor: pointer
+    background: #0003
+    height: 30px
+    padding: 5px
+    position: absolute
+    border-radius: 5px
+    left: 5px
+    top: 5px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    svg
+      height: 20px
+      transition: transform .8s
+
+  &.show
+    left: 0
+    .toggler
+      svg
+        transform: rotate(-90deg)

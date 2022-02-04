@@ -1,6 +1,8 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
+const webpack = require('webpack');
 const path = require("path");
+
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -10,8 +12,17 @@ const config = {
   entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
+    filename: "main.user.js"
+  },
+  optimization: {
+    minimize: false,
   },
   plugins: [
+    // new webpack.ContextReplacementPlugin("// UserScript", "//123123"),
+    new webpack.BannerPlugin({
+      banner: '// ==UserScript== \n// @name         BitReceiver Beta\n// @namespace    Nillkiz\n// @version      1.0.0\n// @homepage     https://github.com/Nillkizz/BitReceiverUS/\n// @homepageURL  https://github.com/Nillkizz/BitReceiverUS\n// @description  Receive all requests\n// @author       Nillkizz\n// @include      *://*/*\n// @icon         http://zergbit.net/static/zergbit.ico\n// @grant        GM_addElement\n// ==/UserScript==',
+      raw: true
+    })
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
