@@ -10,7 +10,7 @@ type ConfigType = {
   paySystems: string[]
 }
 
-type DataType = {
+export type DataType = {
   paySystems: string[]
   state: {
     show: boolean
@@ -25,14 +25,25 @@ type DataType = {
   }
 }
 
+export type SessionStateType = {
+  enabled: boolean
+  buyedIds: string[]
+}
+
 export class Menu {
   html: string
   el: HTMLDivElement
   data: DataType
+  sesState: SessionStateType
+
 
   constructor() {
     this.el = document.createElement('div');
     this.html = require('./menu.html').default
+    this.sesState = AlpineInstance.reactive({
+      enabled: true,
+      buyedIds: []
+    });
 
     const conf: ConfigType = {
       delay: 0,
@@ -71,7 +82,6 @@ export class Menu {
   }
 
   init() {
-    this.render();
     document.addEventListener('alpine:init', () => {
       AlpineInstance.data('menu', () => ({
         init() {
@@ -79,6 +89,7 @@ export class Menu {
             window.localStorage.setItem('nillkizz_bot_receiver', JSON.stringify(data));
           })
         },
+        sesState: this.sesState,
         data: this.data,
         toggleEditor(state: boolean | undefined) {
           if (this.edit) {
@@ -106,6 +117,7 @@ export class Menu {
         }
       }))
     })
+    this.render();
   }
 
   render() {

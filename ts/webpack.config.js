@@ -1,5 +1,11 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
+const userScriptData = {
+  name: "BitReceiver",
+  ver: "1.0.0",
+};
+const userScriptBanner = `// ==UserScript== \n// @name         ${userScriptData.name}\n// @namespace    Nillkiz\n// @version      ${userScriptData.ver}\n// @homepage     https://github.com/Nillkizz/BitReceiverUS/\n// @homepageURL  https://github.com/Nillkizz/BitReceiverUS\n// @description  Receive all requests\n// @author       Nillkizz\n// @icon         http://zergbit.net/static/zergbit.ico\n// @include      http://zergbit.net/dashboard/buy/\n// @grant        none\n// ==/UserScript==`;
+
 const webpack = require('webpack');
 const path = require("path");
 
@@ -20,7 +26,7 @@ const config = {
   plugins: [
     // new webpack.ContextReplacementPlugin("// UserScript", "//123123"),
     new webpack.BannerPlugin({
-      banner: '// ==UserScript== \n// @name         BitReceiver Beta\n// @namespace    Nillkiz\n// @version      1.0.0\n// @homepage     https://github.com/Nillkizz/BitReceiverUS/\n// @homepageURL  https://github.com/Nillkizz/BitReceiverUS\n// @description  Receive all requests\n// @author       Nillkizz\n// @include      *://*/*\n// @icon         http://zergbit.net/static/zergbit.ico\n// @grant        GM_addElement\n// ==/UserScript==',
+      banner: userScriptBanner,
       raw: true
     })
     // Add your plugins here

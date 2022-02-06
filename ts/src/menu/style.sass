@@ -10,6 +10,12 @@
   transition: left .5s
   width: 350px
   z-index: 999999
+
+  .red_bg
+    background-color: red
+  .lgreen_bg
+    background-color: lightgreen
+
   table
     border-collapse: collapse
     caption
@@ -81,6 +87,13 @@
     svg
       height: 20px
       transition: transform .8s
+
+  .active_toggler
+    position: absolute
+    top: 5px
+    left: 50px
+    height: 30px
+    border: none
 
   &.show
     left: 0
