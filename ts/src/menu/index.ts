@@ -28,6 +28,7 @@ export type DataType = {
 export type SessionStateType = {
   enabled: boolean
   buyedIds: string[]
+  isDebug: boolean
 }
 
 export class Menu {
@@ -42,8 +43,11 @@ export class Menu {
     this.html = require('./menu.html').default
     this.sesState = AlpineInstance.reactive({
       enabled: true,
-      buyedIds: []
+      buyedIds: [],
+      isDebug: new URL(window.location.href).searchParams.get('_bit_debug') === '1'
     });
+
+    if (this.sesState.isDebug) console.debug('%c Receiver Debug enabled.', 'background: #222; color: #bada55');
 
     const conf: ConfigType = {
       delay: 0,

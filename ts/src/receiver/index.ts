@@ -74,7 +74,7 @@ export class Receiver {
 
           this.state.state.curentAverall += data.sendPrice;
 
-          accept_buy_deal(parseInt(id))
+          if (!this.sesState.isDebug) accept_buy_deal(parseInt(id));
           console.log('buyed', data)
           this.sesState.buyedIds.push(id)
           break;
